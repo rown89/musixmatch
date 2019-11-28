@@ -1,32 +1,61 @@
 import React, { Component } from 'react';
+import ReactTable from 'react-table'
+import { RouteComponentProps, withRouter } from "react-router-dom";
 import { ThemeContext } from '../../contexts/leaderboardContext';
+import './leaderboard.scss';
+import 'react-table/react-table.css';
 
-export default class Leaderboard extends Component {
-  constructor(props: any){
+interface MyState {};
+
+interface MyProps extends Partial<RouteComponentProps> {
+  history?: any,
+};
+
+@(withRouter as any)
+export default class Leaderboard extends Component<MyProps, MyState>  {
+  constructor(props: any) {
     super(props);
     this.state = {
-    };
-  };
-  
+    }
+  }
+
+  backBtn = () => {
+    this.props.history.push('/');
+  }
+
   render() {
     return (
-      <ThemeContext.Consumer>{(context: any) => {
-        const {isLightTheme} = context;
-        console.log(isLightTheme);
-        return(
-          <div className="Leaderboard">
-            <div>
-              { Math.max(...isLightTheme.map((score: any, id: number) => {
-                return(
-                  <div key={id}>
-                    Nickname: {score.nick} score: {score.score}
-                  </div>
-                )
-              },0))}
+      <ThemeContext.Consumer>
+        {(context: any) => {
+          const { board } = context;
+          const columns = [{
+            Header: 'Name',
+            accessor: 'nick' // String-based value accessors!
+          }, {
+            Header: 'Score',
+            accessor: 'score'
+          }]
+          return (
+            <div className="Leaderboard">
+              <button className="backBtn" 
+              onClick={() => this.backBtn()}>{'< Back'}</button>
+              
+              <div>
+                <ReactTable 
+                  columns={columns} 
+                  data={board}
+                  defaultSorted={[
+                    {
+                      id: "score",
+                      desc: true
+                    }
+                  ]}
+                />
+              </div>
             </div>
-          </div>
-        )
-      }}</ThemeContext.Consumer>
+          );
+        }}
+      </ThemeContext.Consumer>
     );
   };
 };

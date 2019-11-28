@@ -1,14 +1,15 @@
 import React, {createContext, Component} from 'react';
 
 export const ThemeContext = createContext();
-
 class ThemeContextProvider extends Component {
   state = { 
-    isLightTheme: [],
+    board: [],
   }
 
   updateLeaderboard = () => {
-    this.setState({isLightTheme: [...this.state.isLightTheme, JSON.parse(localStorage.getItem('leaderboard'))]});
+    this.setState({
+      board: [...this.state.board, JSON.parse(localStorage.leaderboard)],
+    });
   };
 
   render() { 
@@ -19,5 +20,5 @@ class ThemeContextProvider extends Component {
     );
   };
 };
- 
+
 export default ThemeContextProvider;

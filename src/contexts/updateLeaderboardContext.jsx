@@ -13,7 +13,7 @@ class UpdateLeaderboard extends Component {
   render() {
     const { updateLeaderboard } = this.context;
     return (
-      <button style={{cursor: 'pointer', padding: 14, margin: 14, borderRadius: 5, border: 'none'}} 
+      <button className={"lowerBtn"} 
       onClick={updateLeaderboard}>Save Score to Leadearboard and Profile</button>
     );
   }

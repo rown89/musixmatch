@@ -5,7 +5,7 @@ import Cards from '../cards/Cards';
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import Modal from 'react-modal';
 import UpdateLeaderboard from '../../contexts/updateLeaderboardContext';
-import './play.scss';import { ThemeContext } from '../../contexts/leaderboardContext';
+import './play.scss'; import { ThemeContext } from '../../contexts/leaderboardContext';
 
 const customStyles = {
   content: {
@@ -16,9 +16,9 @@ const customStyles = {
   }
 };
 
-interface MyState extends Partial<RouteComponentProps> {
-  loading: boolean, score: any, rounds: number, actualRound: number, 
-  randomElements: Array<String>, lyric: Array<String>, lyric2: any, 
+interface MyState {
+  loading: boolean, score: any, rounds?: any, actualRound: number,
+  randomElements: Array<String>, lyric: Array<String>, lyric2: any,
   pickedName: String, pickedTrack: any, profileModalIsOpen: boolean,
 };
 
@@ -100,7 +100,7 @@ export default class Play extends Component<MyProps, MyState> {
   pickedArtist(name: string, track_id: number) {
     this.callbackFromParent(name, track_id);
     if (this.state.lyric2.track.track_id === track_id) {
-      this.setState({score:  this.state.score + 1});
+      this.setState({ score: this.state.score + 1 });
       this.nextStep();
     } else this.nextStep();
   };
@@ -125,9 +125,8 @@ export default class Play extends Component<MyProps, MyState> {
   };
 
   endGame() {
-    console.log('End Game');
     localStorage.setItem('score', this.state.score.toString());
-    let data = {nick: localStorage.nickname, score: localStorage.score};
+    let data = { nick: localStorage.nickname, score: localStorage.score };
     localStorage.setItem('leaderboard', JSON.stringify(data));
 
     return <UpdateLeaderboard />
@@ -155,18 +154,19 @@ export default class Play extends Component<MyProps, MyState> {
             <p>Last games scores:</p>
             <ThemeContext.Consumer>
               {(context: any) => {
-              const {isLightTheme} = context;
-              return(
-                <div className="Leaderboard">
-                  <div>
-                    {isLightTheme.map((score: any, id: number) => {
-                      if(score.nick === localStorage.nickname){
-                        return <div key={id}>{score.nick} {score.score}</div>
-                      }
-                    })}
+                const { board } = context;
+                return (
+                  <div className="Leaderboard">
+                    <div>
+                      {// eslint-disable-next-line
+                        board.map((score: any, id: number) => {
+                          if (score.nick === localStorage.nickname) {
+                            return <div key={id}>{score.nick} {score.score}</div>
+                          }
+                        })}
+                    </div>
                   </div>
-                </div>
-              )
+                )
               }}
             </ThemeContext.Consumer>
           </div>
@@ -179,8 +179,8 @@ export default class Play extends Component<MyProps, MyState> {
   closeModal() { this.setState({ profileModalIsOpen: false }) };
 
   render() {
-    const  { loading, rounds } = this.state;
-    if(localStorage.nickname) {
+    const { loading, rounds } = this.state;
+    if (localStorage.nickname) {
       return (
         <div className="Play">
           {this.profile()}
@@ -191,17 +191,14 @@ export default class Play extends Component<MyProps, MyState> {
             <div className="info">Round: <p>{localStorage.gameCounter}/{rounds}</p></div>
           </div>
           <button className="lowerBtn" onClick={() => this.setState({ profileModalIsOpen: true })}>Profile</button>
-          
-          {
-            loading ? <div className="loading">...loading...</div> :
-              <>{
-                parseInt(localStorage.gameCounter) < rounds ?
+          {loading ? <div className="loading">...loading...</div> :
+            <>{
+              parseInt(localStorage.gameCounter) < rounds ?
                 <> <div className="game-title">Who Sing?</div> {this.startGame()}</> : this.endGame()
-                }
-              </>
+            }</>
           }
         </div>
       );
-   } else return <div>You have to pick a nickname to play ;)</div>
+    } else return <div>You have to pick a nickname to play ;)</div>
   };
 };

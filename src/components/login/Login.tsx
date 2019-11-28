@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import './login.scss';
 
-interface MyState extends Partial<RouteComponentProps> {
+interface MyState {
   placeholder: string, nickname: string,
 };
 
@@ -11,8 +11,8 @@ interface MyProps extends Partial<RouteComponentProps> {
 };
 
 @(withRouter as any)
-export default class Login extends Component<MyProps, MyState > {
-  constructor(props:any) {
+export default class Login extends Component<MyProps, MyState> {
+  constructor(props: any) {
     super(props);
     this.state = {
       placeholder: 'Enter a Nickname',
@@ -23,7 +23,7 @@ export default class Login extends Component<MyProps, MyState > {
     this.handleNickSubmit = this.handleNickSubmit.bind(this);
   };
 
-  componentDidMount(){
+  componentDidMount() {
     if (localStorage.nickname) this.props.history.push("/play");
   }
 
