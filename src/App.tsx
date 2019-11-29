@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Login from './components/login/Login';
-import Play from './components/play/Play';
-import Leaderboard from './components/leaderboard/Leaderboard';
-import './App.scss';
-import logo from './assets/logo.png';
+import Login from "./components/login/Login";
+import Play from "./components/play/Play";
+import Leaderboard from "./components/leaderboard/Leaderboard";
+import "./App.scss";
+import logo from "./assets/logo.png";
 
 class App extends Component {
   render() {
@@ -13,7 +13,9 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <Link className="btn" to={'/leaderboard'}>Leaderboard</Link>
+            <Link className="btn" to={"/leaderboard"}>
+              Leaderboard
+            </Link>
           </header>
         </div>
         <Switch>
@@ -23,7 +25,7 @@ class App extends Component {
         </Switch>
       </Router>
     );
-  };
-};
+  }
+}
 
 export default App;

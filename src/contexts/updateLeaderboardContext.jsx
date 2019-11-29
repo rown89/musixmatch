@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { ThemeContext } from './leaderboardContext';
+import { BoardContext } from './leaderboardContext';
 import '../components/play/play.scss';
 
 class UpdateLeaderboard extends Component {
-  static contextType = ThemeContext;
+  static contextType = BoardContext;
   constructor(props){
     super(props);
     this.state = {

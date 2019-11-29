@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table'
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import { ThemeContext } from '../../contexts/leaderboardContext';
+import { BoardContext } from '../../contexts/leaderboardContext';
 import './leaderboard.scss';
 import 'react-table/react-table.css';
 
@@ -25,7 +25,7 @@ export default class Leaderboard extends Component<MyProps, MyState>  {
 
   render() {
     return (
-      <ThemeContext.Consumer>
+      <BoardContext.Consumer>
         {(context: any) => {
           const { board } = context;
           const columns = [{
@@ -55,7 +55,7 @@ export default class Leaderboard extends Component<MyProps, MyState>  {
             </div>
           );
         }}
-      </ThemeContext.Consumer>
+      </BoardContext.Consumer>
     );
   };
 };

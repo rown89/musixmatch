@@ -1,7 +1,7 @@
 import React, {createContext, Component} from 'react';
 
-export const ThemeContext = createContext();
-class ThemeContextProvider extends Component {
+export const BoardContext = createContext();
+class BoardContextProvider extends Component {
   state = { 
     board: [],
   }
@@ -14,11 +14,11 @@ class ThemeContextProvider extends Component {
 
   render() { 
     return (
-      <ThemeContext.Provider value={{...this.state, updateLeaderboard: this.updateLeaderboard}}>
+      <BoardContext.Provider value={{...this.state, updateLeaderboard: this.updateLeaderboard}}>
         {this.props.children}
-      </ThemeContext.Provider>
+      </BoardContext.Provider>
     );
   };
 };
 
-export default ThemeContextProvider;
+export default BoardContextProvider;

@@ -1,121 +1,125 @@
 .Play {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
 
-	.game-title {
-		margin: 25px 0 0 0;
-		font-size: 22px;
-		color: gray;
-	}
+  .game-title {
+    margin: 25px 0 0 0;
+    font-size: 22px;
+    color: gray;
+  }
 
-	.game-step {
-		margin: 25px 0;
-		color: #ff6050;
-	}
+  .game-step {
+    margin: 25px 0;
+    color: #ff6050;
+  }
 
-	.welcome {
-		display: flex;
-		flex-direction: row;
-		text-align: center;
-		font-weight: bold;
-		color: gray;
+  .welcome {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    font-weight: bold;
+    color: gray;
 
-		.info {
-			width: 120px;
-			margin: 10px;
-			padding: 0 15px 0 15px;
-			color: grey;
+    .info {
+      width: 120px;
+      margin: 10px;
+      padding: 0 15px 0 15px;
+      color: grey;
 
-			p {
-				color: #ff6050;
-			}
-		}
-	}
+      p {
+        color: #ff6050;
+      }
+    }
+  }
 
-	.loading {
-		padding: 10px;
-		animation-name: load;
-		animation-duration: 1.5s;
-		animation-timing-function: linear;
-		animation-iteration-count: infinite;
-		animation-direction: alternate;
-	}
+  .loading {
+    padding: 10px;
+    animation-name: load;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
 
-	.lyric-text {
-		max-width: 990px;
-		height: 150px;
-		overflow: scroll;
-		padding: 10px;
-		margin: 0 10px 0 10px;
-		font-size: 14px;
-		scrollbar-width: none;
-		overflow-y: scroll;
-		color: #6f8096;
-		&::-webkit-scrollbar {
-			display: none;
-			}
-	}
+  .lyric-text {
+    max-width: 990px;
+    height: 150px;
+    overflow: scroll;
+    padding: 10px;
+    margin: 0 10px 0 10px;
+    font-size: 14px;
+    scrollbar-width: none;
+    overflow-y: scroll;
+    color: #6f8096;
 
-	.cards-container {
-		display: flex;
-		flex-flow: row nowrap;
-	}
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 
-	.logoutBtn {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 120px;
-		padding: 15px;
-		margin: 40px 0 40px 0;
-		border: none;
-		border-radius: 10px;
-		font-weight: bold;
-		background: rgb(224, 76, 57);
-		color: white;
-		&:hover {
-		  cursor: pointer;
-		  color: white;
-			background: #F75440;
-			cursor: pointer;
-		}
-	}
+  .cards-container {
+    display: flex;
+    flex-flow: row nowrap;
+  }
 
-	.lowerBtn {
+  .logoutBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    padding: 15px;
+    margin: 40px 0 40px 0;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    background: rgb(224, 76, 57);
+    color: white;
+
+    &:hover {
+      cursor: pointer;
+      color: white;
+      background: #f75440;
+      cursor: pointer;
+    }
+  }
+
+  .lowerBtn {
     min-width: 110px;
     width: auto;
-		margin: 10px;
+    margin: 10px;
     padding: 15px;
-		text-align: center;
-		border: none;
+    text-align: center;
+    border: none;
     border-radius: 20px;
     color: black;
-		background: #E8F0FE;
+    background: #e8f0fe;
     text-decoration: none;
-    &:hover {
-			background: rgb(183, 207, 241);
-			cursor: pointer;
-    }
-	}
-	
-	.flusherBtn {
-		width: 160px;
-		margin: 40px;
-		padding: 20px;
-		background: rgb(19, 163, 67);
-		border: none;
-		border-radius: 20px;
-		font-weight: bold;
-		color: white;
-		&:hover {
-			cursor: pointer;
-		}
-	}
 
-	.Modal {
+    &:hover {
+      background: rgb(183, 207, 241);
+      cursor: pointer;
+    }
+  }
+
+  .flusherBtn {
+    width: 160px;
+    margin: 40px;
+    padding: 20px;
+    background: rgb(19, 163, 67);
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    color: white;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .Modal {
     position: absolute;
     top: 80px;
     left: 40px;
@@ -124,29 +128,34 @@
     background-color: papayawhip;
   }
 
-	.Overlay {
-		position: fixed;
-		top: 0;
+  .Overlay {
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
-		bottom: 0;
-		border: none;
-	}
+    bottom: 0;
+    border: none;
+  }
 
-	@keyframes load {
-		0% {
-		  opacity: 0;
-		}
-		100% {
-			opacity: 1;
-		}
-	}
+  @keyframes load {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .board {
+    padding: 20;
+  }
 }
 
 @media screen and (max-width: 990px) {
-	.Play {
-		.cards-container {
-			flex-flow: column wrap;
-		}
-	}
+  .Play {
+    .cards-container {
+      flex-flow: column wrap;
+    }
+  }
 }
