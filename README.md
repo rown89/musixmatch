@@ -1,4 +1,4 @@
-Enable Cors Anywhere from Firefox or Chrome to excute network requests.
+### Enable Cors Anywhere from Firefox or Chrome to excute network requests.
 
 In the project directory, run:
 
